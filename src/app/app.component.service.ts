@@ -1,34 +1,24 @@
-import {Headers, Http, Response} from '@angular/http'
+import {Http, Response} from '@angular/http'
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Observable";
-import {Paciente} from "./app.paciente";
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/catch'
+import {Paciente} from "./app.paciente";
 
 @Injectable()
 export class PacienteService {
 
-  static headerA = {
-    'Content-Type': 'application/hal+json',
-    'Access-Control-Allow-Origin': '*'
-  };
-
-  static headerObject = {
-    headers: new Headers(PacienteService.headerA)
-  };
+  private url = 'http://localhost:8080/pacientes';
 
   constructor(private http: Http) {
   }
 
-  getPacientes(): Observable<string> {
+  getPacientes(): Observable<any[]> {
 
-    return this.http.get('http://localhost:8080/pacientes', PacienteService.headerObject)
-      .map((response: Response) => response.json())
+    return this.http.get(this.url)
+      .map((response: Response) => {
+        return <Paciente[]> response.json()._embedded.pacientes;
+      });
+
   }
-
-  private handleError(error: Response) {
-    console.error(error);
-    return Observable.throw(error.json().error || 'Service error');
-  }
-
 }

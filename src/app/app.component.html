@@ -3,7 +3,17 @@
 </h1>
 
 <ul>
-  <li *ngFor="let a of pacientes">
-    {{a}}
+  <li *ngFor="let paciente of pacientes">
+    <div>
+      <label> Nombre: </label>{{paciente.nombre}}
+      <br>
+      <label> Apellido: </label>{{paciente.apellido}}
+      <br>
+      <label> Dni: </label>{{paciente.dni}}
+      <br>
+      <label> Mail: </label>{{paciente.mail}}
+      <br>
+    </div>
   </li>
 </ul>
+

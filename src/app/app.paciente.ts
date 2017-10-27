@@ -1,6 +1,7 @@
 export class Paciente {
-  nombre: string;
-  apellido: string;
-  dni: string;
-  mail: string;
+  constructor(
+  public nombre: string,
+  public apellido: string,
+  public dni: string,
+  public mail: string){}
 }

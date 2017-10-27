@@ -11,3 +11,8 @@ h1.app-component{
   background-color: gainsboro;
   padding-bottom: 0.2em;
 }
+
+label {
+  font-family: "Calibri";
+  font-weight: bold;
+}
